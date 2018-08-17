@@ -46,18 +46,22 @@ how to use:
     word_invalid_do()
     need to be applied by u.
     
-MATH:                                                                  
+    
+MATH:
+      
     we use the chars(0-9, a-z, A-Z) = 10+26+26 = 62 diffrent option for 1 char                                                    
     word can be between 5-10 chars, therefor:                                                                                   
-    62^5 = 916132832 differnt option in low number of chars                                                                     
-    62^10 = 8.3929937*(10^17) differnt option in high number of chars                                                           
+        62^5 = 916132832 differnt option in low number of chars                                                                     
+        62^10 = 8.3929937*(10^17) differnt option in high number of chars    
+        
     the odd for two identical word is:                                                                                          
-    1 / (62^5 * 62^5)   = 1 / (62^(5+5)) = 1 / (62^10) ~= 1.19147*(10^-18)     = 0.00000000000000000119147                      
-    1 / (62^10 * 62^10) = 1 / (62^(10+10)) = 1 / (62^20) ~= 1.4196007*(10^-36) = 0.0000000000000000000000000000000000014196007 
+      1 / (62^5 * 62^5)   = 1 / (62^(5+5)) = 1 / (62^10) ~= 1.19147*(10^-18)     = 0.00000000000000000119147                      
+      1 / (62^10 * 62^10) = 1 / (62^(10+10)) = 1 / (62^20) ~= 1.4196007*(10^-36) = 0.0000000000000000000000000000000000014196007 
     so as we can see the odd rly small, but u can even handle this by checking if the words are identical.         
     for 3 identical words its go even smaller.                                                                                
-    1 / (62^5 * 62^5 * 62^5) = 1 / (62^15)    ~= 1.3005428*(10^-27)                                                         
-    1 / (62^10 * 62^10 * 62^10) = 1 / (62^30) ~= 1.6914116*(10^-54)                                                         
+      1 / (62^5 * 62^5 * 62^5) = 1 / (62^15)    ~= 1.3005428*(10^-27)                                                         
+      1 / (62^10 * 62^10 * 62^10) = 1 / (62^30) ~= 1.6914116*(10^-54)              
+
  Good luck
 
                                     _____               _                      
