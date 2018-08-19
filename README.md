@@ -13,7 +13,7 @@ the project build in python 3.
 the project use the library Vpython for create 3D shapes.
 
 its easy for the user to use and write the captach's word, but it can be difficult for bots to use.
-its suppose to be a "Checking page" that will refer u to the page u wanted, but it can be applied in other methods. 
+its suppose to be a "Checking page" that will refer u to the page u wanted, but it can be implement in other methods. 
 
 Logic:
     the project create 3 shpaes randomly in canvas:
@@ -44,7 +44,7 @@ how to use:
 * functinos:
     word_valid_do()
     word_invalid_do()
-    need to be applied by u.
+    need to be implement by u.
     
     
 MATH:
