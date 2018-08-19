@@ -2,11 +2,12 @@ import vpython
 import random
 import string
 
+FIXING_POSITION=-12
 WORD_NUMBER_RATIO = 3
 ASCII_CVT = 48
 ENTER_KEY = 13
 WINDOW_WIDTH = 800
-WINDOW_HEIGHT = 60
+WINDOW_HEIGHT = 600
 KEYPAD = range(96, 106)
 TEXT_BOX_STYLE_LEN = 62
 RANDOM_WORD_MAX_LEN = 10
@@ -140,7 +141,7 @@ def create_all_shapes():
     start_position = -DISTANCE_BETWEEN_SHAPE
     for shape in shape_list:
         if type(shape) in (vpython.pyramid, vpython.cone, vpython.cylinder):
-            shape.pos = vpython.vector(start_position, -12, 0)  # fixing shapes align to be the same line
+            shape.pos = vpython.vector(start_position, FIXING_POSITION, 0)
         else:
             shape.pos = vpython.vector(start_position, 0, 0)
         shape.rotate(angle=SHAPE_ROTATE_ANGLE)
@@ -156,7 +157,6 @@ def create_all_shapes():
     shape_type = shape_type.split("'")[0]
     shape_type = shape_type.replace('"', "")
     color = convert_code_to_color(str(shape_list[random_choice].color))
-
     return text_list[random_choice].text, shape_type, color
 
 
@@ -206,11 +206,33 @@ def key_input(event):
     elif key_press in DESCRIPTION_OF_KEYS:
         pass  # ignore "saved words"
     elif len(text_box.text) > TEXT_BOX_STYLE_LEN + RANDOM_WORD_MAX_LEN:
-        pass
+        pass  # don't allow to use more chars then RANDOM_WORD_MAX_LEN
     elif key_location in KEYPAD:
         text_box.text += (chr(key_location - ASCII_CVT))
     else:
         text_box.text += key_press
+
+
+def show_instruction():
+    """
+    show the instruction massage to user: which shape's type and color to pick
+    :return: None
+    """
+    vpython.text(text=INSTRUCTION_MESSAGE, color=vpython.color.red, pos=vpython.vector(-25, 25, 0),
+                 height=3)
+    vpython.text(text=chosen_shape + INSTRUCTION_MESSAGE2 + str(shape_color),
+                 color=vpython.color.red,
+                 pos=vpython.vector(-25, 20, 0), height=3)
+
+
+def form_box():
+    """
+    this function handle the form box
+    :return: None
+    """
+    text_box.text = TEXT_BOX_STYLE
+    scene.bind(KEY_RECOGNIZE_BY, key_input)
+    vpython.button(bind=word_checker, text=BUTTON_TEXT)
 
 
 # main part
@@ -222,18 +244,7 @@ info = create_all_shapes()
 word = info[0]
 chosen_shape = info[1]
 shape_color = info[2]
-
-# msg part
-message = vpython.text(text=INSTRUCTION_MESSAGE, color=vpython.color.red, pos=vpython.vector(-25, 25, 0),
-                       height=3)
-text1 = vpython.text(text=chosen_shape + INSTRUCTION_MESSAGE2 + str(shape_color),
-                     color=vpython.color.red,
-                     pos=vpython.vector(-25, 20, 0), height=3)
-
-# answer part
 text_box = vpython.wtext()
 result = vpython.wtext()
-text_box.text = TEXT_BOX_STYLE
-scene.bind(KEY_RECOGNIZE_BY, key_input)
-
-button = vpython.button(bind=word_checker, text=BUTTON_TEXT)
+show_instruction()
+form_box()
