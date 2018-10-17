@@ -12,8 +12,9 @@ Generate a smart test with 3D for Captcha validation
 the project build in python 3.
 the project use the library Vpython for create 3D shapes.
 therefor you need first install the Vpython library.
-you can do it by the command:
-        pip install vpython
+you can do it via the command:
+
+    pip install vpython
 
 its easy for the user to use and write the Captach's word, but it can be difficult for bots to use.
 its suppose to be a "Checking page" that will refer u to the page u wanted, but it can be implement in other methods. 
